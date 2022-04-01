@@ -1,0 +1,37 @@
+<script>
+
+//Ordenação: Ordenar um array usando o método Quicksort
+    
+    function quicksort(array) {
+        if (array.length <= 1) {
+            return array;
+        }
+    
+        var auxiliar = array[0];
+    
+        var ordenadoEsquerda = [];
+        var desordenadoDireita = [];
+    
+        for (var i = 1; i < array.length; i++) {
+            if (array[i] < auxiliar) {
+                ordenadoEsquerda.push(array[i])
+            } else {
+                desordenadoDireita.push(array[i])
+            }
+        }
+    
+        return quicksort(ordenadoEsquerda).concat(auxiliar, quicksort(desordenadoDireita));
+    };
+    
+    var n = prompt("Digite a quantidade de valores");
+    var vetorDesordenado = [];
+    
+    for (var i = 0; i < n; i++) {
+        vetorDesordenado.push(parseInt(prompt("Digite o valor")));
+    }
+    
+    var vetorOrdenado = quicksort(vetorDesordenado);
+    
+    document.write("Array ordenado: ", vetorOrdenado);
+    
+</script>

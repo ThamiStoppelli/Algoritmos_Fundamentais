@@ -1,0 +1,22 @@
+<script>
+    //Contagem: Dado um valor N, conte quantos valores inteiros existem entre 1 (inclusive) e N (inclusive).
+    
+    var n = prompt("Informe a quantidade de notas: ");
+    var nota;
+    var contagem = 0;
+    var i = 0;
+
+    while (i < n) {
+        
+        nota = prompt("Nota do aluno: ");
+
+        if (nota >= 50) {
+            contagem = contagem + 1;
+        }
+
+        i++;
+    }
+
+    document.write("Número de aprovações: " + contagem);
+
+</script>
