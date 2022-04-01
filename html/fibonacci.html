@@ -1,0 +1,27 @@
+<script>
+
+    var n = prompt("Informe a quantidade de termos da sequencia de Fibonacci que deseja visualizar: ");
+
+    var a = 0;
+    var b = 1;
+    var c;
+
+    var i = 2;
+
+    if (n == 1) {
+        document.write(a);
+    } else {
+        document.write(a + " " + b);
+    }
+
+    while (n > i) {
+        i = i + 1;
+        c = a + b;
+        document.write(" " + c);
+        a = b;
+        b = c;
+    }
+
+//0, 1, 1, 2, 3, 5, 8, 13, 21, 34
+
+</script>

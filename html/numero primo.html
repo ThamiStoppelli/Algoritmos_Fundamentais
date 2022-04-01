@@ -1,0 +1,28 @@
+<script>
+
+//Um número inteiro positivo n é primo se for divisível apenas por 1 e por n.
+    
+    var n = parseInt(prompt("Informe um numero: "));
+    var serPrimo = true;
+    
+    if (n === 1 || n === 2) {
+        document.write(`${n} é um número primo`);
+    } else if (n > 1) {
+    
+        for (var i = 2; i < n; i++) {
+            if (n % i == 0) {
+                serPrimo = false;
+                break;
+            }
+        }
+    
+        if (serPrimo) {
+            document.write(`${n} é um número primo`);
+        } else {
+            document.write(`${n} não é um número primo`);
+        }
+    } else {
+        document.write(`${n} não é um número primo`);
+    }
+    
+</script>
