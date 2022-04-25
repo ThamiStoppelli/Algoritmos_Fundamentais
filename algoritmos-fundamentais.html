@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Algoritmos Javascript</title>
+</head>
+<body>
+    <h1>Algoritmos Fundamentais</h1>
+    <p>Para executar cada algoritmo clique no respectivo botão abaixo</p>
+    <br>
+    <button onclick="getElementById('primo').innerHTML=Primo()">Número primo</button>
+    <p id="primo"></p> 
+    <button onclick="getElementById('somatorio').innerHTML=Somatorio()">Somatório</button>
+    <p id ='somatorio'></p>
+    <button onclick="getElementById('fibonacci').innerHTML=Fibonacci()">Fibonacci</button>
+    <p id="fibonacci"></p>
+    <button onclick="getElementById('mdc').innerHTML=MDC()">Máximo divisor comum</button>
+    <p id="mdc"></p>
+    <button onclick="getElementById('ordenacao').innerHTML=Ordenacao()">Ordenação</button>
+    <p id="ordenacao"></p>
+    <button onclick="getElementById('contagem').innerHTML=Contagem()">Contagem</button>
+    <p id="contagem"></p>
+    
+</body>
+
+<script>
+    function Primo() {
+
+        var n = parseInt(prompt("Informe um numero: "));
+        var serPrimo = true;
+
+        if (n === 1 || n === 2) {
+            return(`o número ${n} é primo`);
+        } else if (n > 1) {
+
+            for (var i = 2; i < n; i++) {
+                if (n % i == 0) {
+                    serPrimo = false;
+                    break;
+                }
+            }
+
+            if (serPrimo) {
+                return(`o número ${n} é primo`);
+            } else {
+                return `o número ${n} não é primo`;
+            }
+        } else {
+            return `o número ${n} não é primo`;
+        }
+    }
+
+    function Somatorio() {
+        var n = prompt("Digite a quantidade de valores");
+        var soma = 0;
+
+        for (var i = 0; i < n; i++) {
+            var numero = parseInt(prompt("Digite o valor"));
+            soma += numero;
+        }
+
+        return "Soma = " + parseInt(soma);
+    }
+
+    function Fibonacci(){
+        var n = prompt("Informe a quantidade de termos da sequencia de Fibonacci que você deseja exibir");
+        
+        var sequenciaFibonacci = [0, 1];
+
+        var primeiroTermo = sequenciaFibonacci[0];
+        var segundoTermo = sequenciaFibonacci[1];
+        var proximoTermo;
+        var contador = 2;
+
+        if (n == 1) {
+            return sequenciaFibonacci[0];
+
+        } else if (n < 1) {
+            alert("A quantidade de termos informada deve ser maior que zero");
+
+        } else {
+            while (contador < n) {
+            proximoTermo = primeiroTermo + segundoTermo;
+            primeiroTermo = segundoTermo;
+            segundoTermo = proximoTermo;
+
+            sequenciaFibonacci.push(proximoTermo);
+            contador++;
+            }
+
+            return sequenciaFibonacci;
+        }
+    }
+
+    function MDC() {
+
+        var a = prompt("Digite o primeiro valor");
+        var b = prompt("Digite o segundo valor");
+
+        for(let i = a; i > 0; i--){
+            if(a % i == 0 && b % i == 0) {
+                return `o maior divisor comum entre ${a} e ${b} é ${i}`;
+                break;
+            }
+        }
+    }
+
+    function Ordenacao() {
+
+        function quicksort(array) {
+            if (array.length <= 1) {
+                return array;
+            }
+
+            var auxiliar = array[0];
+
+            var ordenadoEsquerda = [];
+            var desordenadoDireita = [];
+
+            for (var i = 1; i < array.length; i++) {
+                if (array[i] < auxiliar) {
+                    ordenadoEsquerda.push(array[i])
+                } else {
+                    desordenadoDireita.push(array[i])
+                }
+            }
+
+            return quicksort(ordenadoEsquerda).concat(auxiliar, quicksort(desordenadoDireita));
+        };
+
+        var n = prompt("Digite a quantidade de valores");
+        var vetorDesordenado = [];
+
+        for (var i = 0; i < n; i++) {
+            vetorDesordenado.push(parseInt(prompt("Digite o valor")));
+        }
+
+        var vetorOrdenado = quicksort(vetorDesordenado);
+
+        return "Array ordenado: " + vetorOrdenado;
+    }
+
+    function Contagem() {
+        var n = prompt("Informe a quantidade de notas: ");
+        var nota;
+        var contagem = 0;
+        var i = 0;
+
+        while (i < n) {
+            
+            nota = prompt("Nota do aluno: ");
+
+            if (nota >= 50) {
+                contagem = contagem + 1;
+            }
+
+            i++;
+        }
+
+        return "Número de aprovações: " + contagem;
+    }
+
+</script>
+
+</html>
